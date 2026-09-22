@@ -1,0 +1,45 @@
+# Render Blueprint: Dashboard → New → Blueprint → pick this repo.
+# Values marked sync: false are prompted for on first deploy.
+services:
+  - type: web
+    name: email-server
+    runtime: node
+    # Gmail SMTP needs a paid instance: Render's free plan blocks SMTP ports.
+    plan: starter
+    region: singapore
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: MOTIVITYLABS_SMTP_USER
+        sync: false
+      - key: MOTIVITYLABS_SMTP_PASS
+        sync: false
+      - key: MOTIVITYLABS_TO_EMAILS
+        sync: false
+      - key: MOTIVITYLABS_ALLOWED_ORIGINS
+        sync: false
+      - key: MOTIVITYLABS_WEBSITE_URL
+        sync: false
+      - key: WEEMRIDE_SMTP_USER
+        sync: false
+      - key: WEEMRIDE_SMTP_PASS
+        sync: false
+      - key: WEEMRIDE_TO_EMAILS
+        sync: false
+      - key: WEEMRIDE_ALLOWED_ORIGINS
+        sync: false
+      - key: WEEMRIDE_WEBSITE_URL
+        sync: false
+      - key: ANKLEIT_SMTP_USER
+        sync: false
+      - key: ANKLEIT_SMTP_PASS
+        sync: false
+      - key: ANKLEIT_TO_EMAILS
+        sync: false
+      - key: ANKLEIT_ALLOWED_ORIGINS
+        sync: false
+      - key: ANKLEIT_WEBSITE_URL
+        sync: false
